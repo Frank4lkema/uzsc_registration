@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "dashboards#home"
+  root to: "dashboard#home"
 
-  get 'dashboards/home'
+  get 'dashboard/home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
