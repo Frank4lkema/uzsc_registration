@@ -9,6 +9,7 @@
 					<%= f.label :email, 'E-mail:' %>
 					<%= f.input :email, required: true, label: false %>
 					<%= f.input :name, required:true %>
+					<%= f.input :team, collection: TEAMS, required:true %>
 					<%= f.label :password, 'Wachtwoord:' %>
 					<%= f.input :password, required: true, label: false%>
 					<%= f.label :password_confirmation, 'Bevestig wachtwoord :' %>
