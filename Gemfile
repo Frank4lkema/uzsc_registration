@@ -51,8 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
   gem 'faker', '~> 1.9.1'
   gem 'shoulda-matchers'
 end
