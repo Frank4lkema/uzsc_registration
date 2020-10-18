@@ -1,0 +1,23 @@
+<div class="row bg-dark">
+	<div class="col-sm-3">
+
+	</div>
+	<div class="col-sm-6 text-center text-white">
+		<h1>
+			UZSC
+		</h1>
+	</div>
+	<div class="col-sm-3 text-white">
+		<div class="dropdown col-sm-3 offset-sm-7">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-bars fa-3x"></i>
+			</button>
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+				<%= link_to 'Uitloggen', destroy_user_session_path, method: :delete, class:" text-black" %>
+			</div>
+		</div>
+		<!--<div class="col-sm-3 offset-sm-9">-->
+			<!--<i class="fas fa-bars fa-3x"></i>-->
+		<!--</div>-->
+	</div>
+</div>
