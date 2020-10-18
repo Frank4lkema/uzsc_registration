@@ -1,2 +1,3 @@
-<h1>Welcome Uzsc</h1>
-<p>weclome</p>
+<% @all_training_spots.each do |training| %>
+	<%= render "dashboard/partials/training_overview", {training: training}%>
+<% end %>
