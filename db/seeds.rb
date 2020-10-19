@@ -1,4 +1,4 @@
-
+TrainingTeam.delete_all
 Training.delete_all
 
 spreadsheet = Roo::Excelx.new("importbestand.xlsx")
@@ -13,14 +13,18 @@ body.each do |row|
 		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
 		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
 
-		Training.create(
+		training = Training.create(
 			date: row[0],
 			start_hour: start_hour,
 			end_hour: end_hour,
 			max_participants: 100,
-			team: ["Jeugd"]
 
 		)
+		TrainingTeam.create(
+			name:"Jeugd",
+			training_id: training.id
+		)
+
 	else
 		teams = row[3].scan(/../).map do |team|
 			team = team.split("")
@@ -36,14 +40,19 @@ body.each do |row|
 		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
 		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
 
-		Training.create(
+		training = Training.create(
 			date: row[0],
 			start_hour: start_hour,
 			end_hour: end_hour,
 			max_participants: 30,
-			team: teams
-
 		)
+
+		teams.each do |team|
+			TrainingTeam.create(
+							name:team,
+							training_id: training.id
+			)
+		end
 
 	end
 end

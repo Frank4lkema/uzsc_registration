@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_145047) do
+ActiveRecord::Schema.define(version: 2020_10_19_180330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2020_10_19_145047) do
     t.index ["user_id"], name: "index_training_participants_on_user_id"
   end
 
+  create_table "training_teams", force: :cascade do |t|
+    t.string "name"
+    t.bigint "training_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["training_id"], name: "index_training_teams_on_training_id"
+  end
+
   create_table "trainings", force: :cascade do |t|
     t.date "date"
     t.string "start_hour"
@@ -31,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_10_19_145047) do
     t.integer "max_participants"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "team"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,4 +57,5 @@ ActiveRecord::Schema.define(version: 2020_10_19_145047) do
 
   add_foreign_key "training_participants", "trainings"
   add_foreign_key "training_participants", "users"
+  add_foreign_key "training_teams", "trainings"
 end
