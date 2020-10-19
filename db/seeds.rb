@@ -22,7 +22,17 @@ body.each do |row|
 
 		)
 	else
-		teams = row[3].scan(/../)
+		teams = row[3].scan(/../).map do |team|
+			team = team.split("")
+			if team[0] == "H"
+				team[0] = "Heren"
+			else
+				team[0] = "Dames"
+			end
+
+			team.join(" ")
+		end
+		
 		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
 		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
 
