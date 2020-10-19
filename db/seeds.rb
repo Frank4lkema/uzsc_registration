@@ -1,30 +1,39 @@
-
 User.destroy_all
+Training.delete_all
 
-users = [
-	{ email:"martin@gmail.com",password:"geheim12345",name:"Martin" },
-	{ email:"martijn@gmail.com",password:"geheim12345",name:"Martijn"  },
-	{ email:"koen@gmail.com",password:"geheim12345" ,name:"Koen" },
-	{ email:"mats@gmail.com",	 password:"geheim12345",name:"Mats"  },
-	{ email:"thijs@gmail.com",	password:"geheim12345",name:"Thijs"  },
-	{ email:"rik@gmail.com", password:"geheim12345",name:"Rik"  },
-	{ email:"dexter@gmail.com", password:"geheim12345",name:"Dexter" },
-	{ email:"lucas@gmail.com",	password:"geheim12345",name:"Lucas"  },
-	{ email:"hagen@gmail.com",	password:"geheim12345",name:"Hagen"  },
-	{ email:"erik@gmail.com",	password:"geheim12345",name:"Erik" },
-	{ email:"joost@gmail.com",	password:"geheim12345",name:"Joost" },
-	{ email:"hans@gmail.com",	password:"geheim12345",name:"Hans" },
-	{ email:"arnoud@gmail.com",	password:"geheim12345",name:"Arnoud" },
-	{ email:"frank@gmail.com",password:"geheim12345",name:"Frank" },
-]
-
-users.each do |user|
-	new_user = User.create!(user)
+spreadsheet = Roo::Excelx.new("importbestand.xlsx")
+body = []
+(2..spreadsheet.last_row).each do |i|
+	body << spreadsheet.row(i)
 end
 
-Training.create(
-			date:"22-10-2020".to_date,
-			start_hour: "19:35",
-			end_hour: "20:30",
-			max_participants:30
-)
+
+body.each do |row|
+	if row[3] == "JEUGD"
+		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
+		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
+
+		Training.create(
+			date: row[0],
+			start_hour: start_hour,
+			end_hour: end_hour,
+			max_participants: 100,
+			team: ["Jeugd"]
+
+		)
+	else
+		teams = row[3].scan(/../)
+		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
+		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
+
+		Training.create(
+			date: row[0],
+			start_hour: start_hour,
+			end_hour: end_hour,
+			max_participants: 30,
+			team: teams
+
+		)
+
+	end
+end
