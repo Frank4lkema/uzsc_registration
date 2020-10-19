@@ -21,7 +21,7 @@ body.each do |row|
 
 		)
 		TrainingTeam.create(
-			name:"Jeugd",
+			team:"Jeugd",
 			training_id: training.id
 		)
 
@@ -49,7 +49,7 @@ body.each do |row|
 
 		teams.each do |team|
 			TrainingTeam.create(
-							name:team,
+							team:team,
 							training_id: training.id
 			)
 		end
