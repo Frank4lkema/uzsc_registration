@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def home
-    binding.pry
-    @all_training_spots = Training.all
+    @all_training_spots = Training.select{|x| x.team.include?(current_user.team)}
+
   end
 end

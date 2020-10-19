@@ -1,4 +1,4 @@
-User.destroy_all
+
 Training.delete_all
 
 spreadsheet = Roo::Excelx.new("importbestand.xlsx")
