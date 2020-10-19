@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def home
-    @all_training_spots = Training.select{|x| x.team.include?(current_user.team)}
-
+    @all_training_spots = Training.joins(:training_teams).where(training_teams:{name:current_user.team})
+    
   end
 end
