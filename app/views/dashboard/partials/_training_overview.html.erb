@@ -9,7 +9,10 @@
 	</div>
 	<div class="product-info">
 		<div class="product-text">
-			<h2><%= training.start_hour %> - <%= training.end_hour %> </h2>
+			<div class="padding-tp text-center">
+				<h1><%= training.start_hour %> - <%= training.end_hour %> </h1>
+			</div>
+
 		</div>
 		<div id="btn">
 			<% if training.training_participants.find_by(user_id: current_user.id).present? %>
