@@ -2,8 +2,13 @@ class TrainingParticipantsController < ApplicationController
 	def create
 		@training = Training.find(params[:training_id])
 		if @training.training_participants.count < @training.max_participants
-			TrainingParticipant.create(user_id:current_user.id, training_id:@training.id)
-			flash[:notice] = "Aangemeld voor training"
+			if current_user.training_participants.joins(:training).where('trainings.date >= ?',Date.today).blank?
+				TrainingParticipant.create(user_id:current_user.id, training_id:@training.id)
+				flash[:notice] = "Aangemeld voor training"
+			else
+				flash[:alert] = "Kan nog niet aanmelden, wacht 1 dag na laatste training"
+			end
+
 		else
 			flash[:alert] = "Maximaal aantal personen bereikt"
 		end
