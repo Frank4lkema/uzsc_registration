@@ -11,9 +11,19 @@
 		<div class="product-text">
 			<h2><%= training.start_hour %> - <%= training.end_hour %> </h2>
 		</div>
-		<div class="product-price-btn">
+		<div id="btn">
+			<% if training.training_participants.find_by(user_id: current_user.id).present? %>
+				<span class="noselect">
+					<h1>Al aangemeld</h1>
+				</span>
+			<% else %>
+				<span class="noselect">
+					<%= link_to "Aanmelden", training_participants_path(training_id: training.id), method: :post %>
+				</span>
+			<% end %>
+			<div id="circle">
 
-
+			</div>
 		</div>
 	</div>
 </div>
