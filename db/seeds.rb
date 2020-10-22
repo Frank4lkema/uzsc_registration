@@ -1,3 +1,4 @@
+TrainingParticipant.delete_all
 TrainingTeam.delete_all
 Training.delete_all
 
