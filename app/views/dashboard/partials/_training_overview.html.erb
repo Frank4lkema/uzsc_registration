@@ -14,7 +14,7 @@
 		<div id="btn">
 			<% if training.training_participants.find_by(user_id: current_user.id).present? %>
 				<span class="noselect">
-					<h1>Al aangemeld</h1>
+					<%= link_to "Afmelden", training_participant_path(training.training_participants.find_by(user_id: current_user.id).id ), method: :delete %>
 				</span>
 			<% else %>
 				<span class="noselect">

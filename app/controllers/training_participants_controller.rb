@@ -4,11 +4,21 @@ class TrainingParticipantsController < ApplicationController
 		if @training.training_participants.count < @training.max_participants
 			TrainingParticipant.create(user_id:current_user.id, training_id:@training.id)
 			flash[:notice] = "Aangemeld voor training"
-
-			redirect_to dashboard_home_path
 		else
 			flash[:alert] = "Maximaal aantal personen bereikt"
-			redirect_to dashboard_home_path
 		end
+		redirect_to dashboard_home_path
+	end
+
+	def destroy
+		@training_participant = TrainingParticipant.find( params[:id])
+		if @training_participant.present?
+			@training_participant.destroy
+			flash[:notice] = "Afgemeld voor training"
+		else
+			flash[:alert] = "Afmelding mislukt"
+		end
+
+		redirect_to dashboard_home_path
 	end
 end
