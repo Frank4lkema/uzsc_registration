@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
 	get 'dashboard/home'
 	resources :training_participants
+	resources :users
 
 end

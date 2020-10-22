@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 offset-sm-3 margin-tp-300" id="login-box">
+			<h2><i class="fa fa-sign-in"> </i> Wijzig profiel</h2>
+			<hr />
+
+			<%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
+				<div class="form-inputs">
+					<%= f.label :email, 'E-mail:' %>
+					<%= f.input :email, required: true, label: false %>
+					<%= f.input :name, required:true %>
+					<%= f.input :team, collection: TEAMS, required:true %>
+					<%= f.label :password, 'Wachtwoord:' %>
+					<%= f.input :password, required: true, label: false%>
+				</div>
+
+				<div class="form-actions margin-bt-30">
+					<%= f.button :submit, "Wijzig Profiel", class: 'btn btn-md btn-main-1 btn-width-full' %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
