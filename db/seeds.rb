@@ -45,7 +45,7 @@ body.each do |row|
 			date: row[0],
 			start_hour: start_hour,
 			end_hour: end_hour,
-			max_participants: 30,
+			max_participants: 10,
 		)
 
 		teams.each do |team|
