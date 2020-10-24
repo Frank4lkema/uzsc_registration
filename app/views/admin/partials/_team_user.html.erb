@@ -1,0 +1,28 @@
+<div class="card-container">
+	<h3><%= team_user.name %></h3>
+	<div class="buttons">
+		<button class="primary">
+			Edit
+		</button>
+		<button class="primary ghost">
+			Verwijder
+		</button>
+	</div>
+	<div class="skills">
+		<h6>Aantal keer getraint:</h6>
+		<ul>
+			<%= team_user.training_participants.count %>
+		</ul>
+	</div>
+</div>
+
+<footer>
+	<p>
+		Created with <i class="fa fa-heart"></i> by
+		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+		- Read how I created this
+		<a target="_blank" href="https://florin-pop.com/blog/2019/04/profile-card-design">here</a>
+		- Design made by
+		<a target="_blank" href="https://dribbble.com/shots/6276930-Profile-Card-UI-Design">Ildiesign</a>
+	</p>
+</footer>

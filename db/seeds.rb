@@ -71,3 +71,15 @@ UserRole.create(
 	role_type: USER_ROLES[0],
 	user_id: user.id
 )
+
+user_2 = User.create(
+	name:"Frank2",
+	email:"frank2@gmail.com",
+	password: "test123456",
+	team: TEAMS[6],
+	)
+
+UserRole.create(
+	role_type: USER_ROLES[1],
+	user_id: user_2.id
+)

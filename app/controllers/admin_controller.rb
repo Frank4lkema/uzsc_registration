@@ -1,6 +1,6 @@
-class Admincontroller < ApplicationController
+class AdminController < ApplicationController
 
-	def player_over_view
-
+	def player_overview
+		@team_users = User.where(team: current_user.team)
 	end
 end
