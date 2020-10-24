@@ -9,9 +9,13 @@
 					<%= f.label :email, 'E-mail:' %>
 					<%= f.input :email, required: true, label: false %>
 					<%= f.input :name, required:true %>
-					<%= f.input :team, collection: TEAMS, required:true %>
-					<%= f.label :password, 'Wachtwoord:' %>
-					<%= f.input :password, required: true, label: false%>
+					<% if current_user.admin_user?%>
+						<%= f.input :team, collection: TEAMS, required:true %>
+					<% end %>
+					<% if current_user == @user %>
+						<%= f.label :password, 'Wachtwoord:' %>
+						<%= f.input :password, required: true, label: false%>
+					<% end %>
 				</div>
 
 				<div id="btn">

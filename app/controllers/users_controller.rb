@@ -33,6 +33,17 @@ class UsersController < ApplicationController
 		redirect_to dashboard_home_path
 	end
 
+	def destroy
+		@user = User.find( params[:id])
+		if current_user != @user and @user.present? and @user.destroy
+			flash[:notice] = "Speler verwijderd"
+		else
+			flash[:alert] = "Speler verwijderen mislukt"
+		end
+
+		redirect_to admin_player_overview_path
+	end
+
 
 
 	private

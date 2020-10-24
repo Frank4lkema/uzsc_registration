@@ -3,10 +3,10 @@
 		<h3><%= team_user.name %></h3>
 		<div class="buttons">
 			<button class="primary">
-				Edit
+				<%= link_to "Edit", edit_user_path(team_user.id) %>
 			</button>
 			<button class="primary ghost">
-				Verwijder
+				<%= link_to "Verwijder", user_path(team_user.id), method: :delete %>
 			</button>
 		</div>
 		<div class="skills">

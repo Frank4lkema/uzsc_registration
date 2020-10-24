@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :training_participants
-  has_one :user_role
+  has_many :training_participants,dependent: :destroy
+  has_one :user_role, dependent: :destroy
 
   def admin_user?
     self.user_role.role_type.to_sym == USER_ROLES[0]
