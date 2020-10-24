@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 offset-sm-3 margin-tp-300" id="login-box">
+			<h2><i class="fa fa-sign-in"> </i> Maak speler aan</h2>
+			<hr />
+
+			<%= simple_form_for @user , method: :post do |f| %>
+				<div class="form-inputs">
+					<%= f.label :email, 'E-mail:' %>
+					<%= f.input :email, required: true, label: false %>
+					<%= f.input :name, required:true %>
+					<%= f.input :team, as: :hidden, input_html: { value: current_user.team } %>
+
+				</div>
+
+				<div id="btn">
+					<%= f.button :submit, "Maak speler aan", class: "text-white" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

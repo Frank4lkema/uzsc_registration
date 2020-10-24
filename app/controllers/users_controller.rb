@@ -1,4 +1,20 @@
 class UsersController < ApplicationController
+
+	def new
+		@user = User.new
+	end
+
+	def create
+		@user = User.create(user_params)
+		@user.password = BASIC_PASSWORD
+		if @user.save
+			flash[:notice] = "Speler aangemaakt"
+		else
+			flash[:alert] = "Speler niet aangemaakt"
+		end
+		redirect_to admin_player_overview_path
+	end
+
 	def edit
 		@user = User.find(params[:id])
 	end
