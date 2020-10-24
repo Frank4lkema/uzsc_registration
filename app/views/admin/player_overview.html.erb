@@ -1,6 +1,8 @@
 
-<div class="padding-tp display-flex ">
-	<% @team_users.each do |team_user| %>
-		<%= render "admin/partials/team_user", {team_user: team_user}%>
-	<% end %>
+<div class="padding-tp">
+	<div class="row">
+		<% @team_users.each do |team_user| %>
+			<%= render "admin/partials/team_user", {team_user: team_user}%>
+		<% end %>
+	</div>
 </div>
