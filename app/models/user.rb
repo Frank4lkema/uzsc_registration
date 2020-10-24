@@ -7,10 +7,7 @@ class User < ApplicationRecord
   has_many :training_participants
   has_one :user_role
 
-  enum role: USER_ROLES
-
-
   def admin_user?
-    self.user_role.role_type == USER_ROLES[0]
+    self.user_role.role_type.to_sym == USER_ROLES[0]
   end
 end

@@ -1,7 +1,8 @@
 TrainingParticipant.delete_all
+UserRole.delete_all
 TrainingTeam.delete_all
 Training.delete_all
-
+User.delete_all
 spreadsheet = Roo::Excelx.new("importbestand.xlsx")
 body = []
 (2..spreadsheet.last_row).each do |i|
@@ -57,3 +58,16 @@ body.each do |row|
 
 	end
 end
+
+
+user = User.create(
+		name:"Frank",
+		email:"frank@gmail.com",
+		password: "test123456",
+		team: TEAMS[6],
+)
+
+UserRole.create(
+	role_type: USER_ROLES[0],
+	user_id: user.id
+)

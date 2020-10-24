@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_091735) do
   end
 
   create_table "user_roles", force: :cascade do |t|
-    t.integer "role_type"
+    t.string "role_type"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
