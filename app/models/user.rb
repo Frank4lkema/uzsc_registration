@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :training_participants
   has_one :user_role
+
+  enum role: USER_ROLES
 end
