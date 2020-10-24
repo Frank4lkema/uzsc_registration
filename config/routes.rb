@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 	end
 
 	get 'dashboard/home'
+	get 'admin/player_overview'
+
 	resources :training_participants
 	resources :users
 
