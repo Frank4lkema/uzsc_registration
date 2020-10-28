@@ -1,28 +1,15 @@
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6 offset-sm-3 margin-tp-300" id="login-box">
-			<h2><i class="fa fa-sign-in"> </i> Inloggen</h2>
-			<hr />
+<div class="login">
+	<div class="login-h1">
+		<h2>Inloggen</h2>
 
-			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-				<div class="form-inputs">
-					<%= f.label :email, 'E-mail:' %>
-					<%= f.input :email, required: true, label: false %>
-					<%= f.label :password, 'Wachtwoord:' %>
-					<%= f.input :password, required: true, label: false%>
-
-					<div class="col-sm-12">
-						<div class="col-sm-12">
-							<%= f.input :remember_me, label: ' Onthoud mij', input_html: {checked: true}, as: :boolean if devise_mapping.rememberable? %>
-							<br />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-actions margin-bt-30">
-					<%= f.button :submit, "Inloggen", class: 'btn btn-md btn-main-1 btn-width-full' %>
-				</div>
-			<% end %>
-		</div>
 	</div>
+	<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		<%= f.input :email, required: true, label: false, class: "login-form-field", placeholder: "E-mail" %>
+		<%= f.input :password, required: true, label: false,  placeholder: "Wachtwoord", class: "login-form-field"%>
+		<%= f.button :submit, "Inloggen", class: 'login-button' %>
+	<% end %>
 </div>
+
+
+
+

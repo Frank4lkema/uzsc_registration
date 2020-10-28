@@ -1,8 +1,22 @@
 @import "bootstrap/scss/bootstrap";
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+
+
+
+
+
+
 @import "dashboards";
 @import "training";
 @import "main";
 @import "nav_bar";
 @import "header";
 @import "button";
-@import "team_user"
+@import "team_user";
+@import "login";
