@@ -1,15 +1,15 @@
-<div class="login">
-	<div class="login-h1">
-		<h2>Inloggen</h2>
-
+<div class="login-wrapper">
+	<div class="img-grid">
+		<%= image_tag("bitmap-copy.png",class:"login-img") %>
 	</div>
-	<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-		<%= f.input :email, required: true, label: false, class: "login-form-field", placeholder: "E-mail" %>
-		<%= f.input :password, required: true, label: false,  placeholder: "Wachtwoord", class: "login-form-field"%>
-		<%= f.button :submit, "Inloggen", class: 'login-button' %>
-	<% end %>
+	<div class="login">
+			<h1 class="login-h1">Inloggen</h1>
+		<div class="login-form">
+			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				<%= f.input :email, required: true, label: false, class: "login-form-field", placeholder: "E-mail" %>
+				<%= f.input :password, required: true, label: false,  placeholder: "Wachtwoord", class: "login-form-field"%>
+				<%= f.button :submit, "Inloggen", class: 'login-button' %>
+			<% end %>
+		</div>
+	</div>
 </div>
-
-
-
-

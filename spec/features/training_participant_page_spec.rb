@@ -26,7 +26,7 @@ RSpec.describe 'Trying to reserve a Training', type: :feature do
 		within(all(".wrapper").first) do
 			click_on 'Aanmelden'
 		end
-		
+
 		expect(page).to have_content('Aangemeld voor training')
 
 		within(all(".wrapper")[2]) do
