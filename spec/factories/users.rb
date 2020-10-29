@@ -3,7 +3,7 @@ FactoryBot.define do
 		email {"Carl@Sagan.com"}
 		password {"test12345"}
 	    name {"carl"}
-		team {"Heren 7 "}
+		team {"Heren 7"}
 
 	end
 

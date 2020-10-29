@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :training_team do
-    name { "MyString" }
-    references { "" }
+    team { "Heren 7" }
   end
 end
