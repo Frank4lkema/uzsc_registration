@@ -9,7 +9,13 @@ FactoryBot.define do
 
 	trait :player do
 		after(:create) do |user|
-			create(:user_role, user_id: user.id)
+			create(:user_role, :player_role, user_id: user.id)
+		end
+	end
+
+	trait :admin do
+		after(:create) do |user|
+			create(:user_role,:admin_role, user_id: user.id)
 		end
 	end
 end

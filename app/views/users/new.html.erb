@@ -8,7 +8,8 @@
 				<div class="form-inputs">
 					<%= f.label :email, 'E-mail:' %>
 					<%= f.input :email, required: true, label: false %>
-					<%= f.input :name, required:true %>
+					<%= f.label :name, 'Naam:' %>
+					<%= f.input :name, label:false, required:true %>
 					<%= f.input :team, as: :hidden, input_html: { value: current_user.team } %>
 
 				</div>

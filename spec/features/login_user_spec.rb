@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Creating an author', type: :feature do
+RSpec.describe 'Inloggen', type: :feature do
 	before {create(:user, :player)}
 	before {visit new_user_session_path}
 
