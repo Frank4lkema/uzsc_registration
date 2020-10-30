@@ -1,0 +1,62 @@
+.training-overview-h1{
+	padding-left: 60px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	font-size: 70px;
+}
+
+
+.trainings_this_week{
+	 display:grid;
+	 grid-template-columns: 60px 1fr 60px;
+}
+
+.trainings_upcoming{
+	display:grid;
+	grid-template-columns: 60px 1fr 60px;
+}
+
+.training-card{
+	grid-column: 2/3;
+	height: 300px;
+	border-radius: 15px;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+	background-color: #ffffff;
+
+	display:grid;
+	grid-template-rows:1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 50px 1fr 1fr 1fr 1fr 50px
+}
+
+.training-card-date{
+	grid-row: 2/3;
+	grid-column: 2/6;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 30px;
+	color: #37474f;
+
+}
+.training-card-time{
+	padding-top: 10px;
+	grid-row: 3/4;
+	grid-column: 2/6;
+	font-family: Inter;
+	font-size: 16px;
+	color: #546e7a;
+}
+
+.training-card-count{
+	grid-row: 5/6;
+	grid-column: 2/4;
+	color: #546e7a;
+	display: flex;
+}
+
+.training-card-button{
+	grid-row: 4/6;
+	grid-column: 4/6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
