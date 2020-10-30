@@ -2,18 +2,22 @@
 	<h1 class="training-overview-h1">
 		Trainingen deze week
 	</h1>
-	<div class="trainings_this_week">
-		<% trainings_this_week = @all_training_spots.select{|x| x.date.cweek == Date.today.cweek} %>
-		<%= render "dashboard/partials/training_overview", {trainings: trainings_this_week}%>
+	<div class="possible_trainings">
+		<% registered_trainings = @all_training_spots.select{|x| x.date.cweek == Date.today.cweek and x.training_participants.find_by(user_id: current_user.id).present?} %>
+		<%= render "dashboard/partials/training_overview", {trainings: registered_trainings, registered:true,maximum_reached:false}%>
+		<% possible_trainings = @all_training_spots.select{|x| x.date.cweek == Date.today.cweek and !x.training_participants.find_by(user_id: current_user.id).present? and !x.maximum_reached?} %>
+		<%= render "dashboard/partials/training_overview", {trainings: possible_trainings, registered:false,maximum_reached:false}%>
+		<% maximum_reached_trainings = @all_training_spots.select{|x| x.date.cweek == Date.today.cweek and !x.training_participants.find_by(user_id: current_user.id).present? and x.maximum_reached?}  %>
+		<%= render "dashboard/partials/training_overview", {trainings: maximum_reached_trainings, registered:false,maximum_reached:true}%>
 	</div>
 
 	<h1 class="training-overview-h1">
 		Trainingen komende weken
 	</h1>
 
-	<div class="trainings_this_week">
+	<div class="possible_trainings">
 		<% trainings_upcoming = @all_training_spots.select{|x| x.date >= Date.today.end_of_week} %>
-		<%= render "dashboard/partials/training_overview", {trainings: trainings_upcoming,this_week:true}%>
+		<%= render "dashboard/partials/training_overview", {trainings: trainings_upcoming, registered:nil,maximum_reached:nil}%>
 	</div>
 </div>
 

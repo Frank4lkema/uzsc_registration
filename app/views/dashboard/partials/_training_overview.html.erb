@@ -1,23 +1,74 @@
-<% trainings.each do |training| %>
-	<div class="training-card">
-		<div class="training-card-date">
-			<h1>
-				<%= day_date_month(training.date) %>
-			</h1>
-		</div>
-		<div class="training-card-time">
-			<h2>
-				<%= training.start_hour %> - <%= training.end_hour %>
-			</h2>
-		</div>
+<% if registered %>
+	<% trainings.each do |training| %>
+		<div class="training-card-registered">
+			<div class="training-card-date-registered">
+				<h1>
+					<%= day_date_month(training.date) %>
+				</h1>
+			</div>
+			<div class="training-card-time-registered">
+				<h2>
+					<%= training.start_hour %> - <%= training.end_hour %>
+				</h2>
+			</div>
 
 
-		<div class="training-card-count">
-			<i class="fas fa-user-circle fa-3x margin-right-20"></i> <h2><%= training.training_participants.count %> / <%= training.max_participants %></h2>
-		</div>
+			<div class="training-card-count-registered">
+				<i class="fas fa-user-circle fa-3x margin-right-20"></i> <h2><%= training.training_participants.count %> / <%= training.max_participants %></h2>
+			</div>
 
-		<div class="training-card-button green-button">
-			<%= link_to "Inschrijven", training_participants_path(training_id: training.id), method: :post %>
+			<div class="training-card-button white-button">
+				<%= link_to "Uitschrijven",  training_participant_path(training.training_participants.find_by(user_id: current_user.id).id ), method: :delete %>
+			</div>
 		</div>
-	</div>
+	<% end %>
+<% elsif maximum_reached %>
+	<% trainings.each do |training| %>
+		<div class="training-card-maximum_reached">
+			<div class="training-card-date-maximum_reached">
+				<h1>
+					<%= day_date_month(training.date) %>
+				</h1>
+			</div>
+			<div class="training-card-time-maximum_reached">
+				<h2>
+					<%= training.start_hour %> - <%= training.end_hour %>
+				</h2>
+			</div>
+
+
+			<div class="training-card-count-maximum_reached">
+				<i class="fas fa-user-circle fa-3x margin-right-20 color-red "></i> <h2><%= training.training_participants.count %> / <%= training.max_participants %></h2>
+			</div>
+
+			<div class="training-card-button grey-button">
+				<%= link_to "Inschrijven",  '#' %>
+			</div>
+		</div>
+	<% end %>
+
+<% else %>
+	<% trainings.each do |training| %>
+		<div class="training-card">
+			<div class="training-card-date">
+				<h1>
+					<%= day_date_month(training.date) %>
+				</h1>
+			</div>
+			<div class="training-card-time">
+				<h2>
+					<%= training.start_hour %> - <%= training.end_hour %>
+				</h2>
+			</div>
+
+
+			<div class="training-card-count">
+				<i class="fas fa-user-circle fa-3x margin-right-20"></i> <h2><%= training.training_participants.count %> / <%= training.max_participants %></h2>
+			</div>
+
+			<div class="training-card-button green-button">
+				<%= link_to "Inschrijven", training_participants_path(training_id: training.id), method: :post %>
+			</div>
+		</div>
+	<% end %>
 <% end %>

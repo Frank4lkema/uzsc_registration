@@ -12,4 +12,12 @@ class Training < ApplicationRecord
 
 	}
 
+
+
+	##INSTANCE METHODS##
+
+	def maximum_reached?
+		self.training_participants.count == self.max_participants
+	end
+
 end
