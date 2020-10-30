@@ -2,4 +2,4 @@ TEAMS = ["Heren 1","Heren 2","Heren 3","Heren 4","Heren 5","Heren 6","Heren 7","
 USER_ROLES = [:admin, :player]
 BASIC_PASSWORD = "Welkom12345"
 All_WEEK_DAYS = ["Maandag", "Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"]
-All_MONTHS = ["Januari", "Februari", "Maart", "April","Mei","Juni", "Juli", "Augustus","September","Okotber","November","December"]
+All_MONTHS = ["Januari", "Februari", "Maart", "April","Mei","Juni", "Juli", "Augustus","September","Oktober","November","December"]
