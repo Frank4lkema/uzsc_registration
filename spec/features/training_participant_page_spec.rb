@@ -5,33 +5,24 @@ RSpec.describe 'Trying to reserve a Training', type: :feature do
 	before { create(:training,:second)}
 	before { create(:training,:third)}
 
-	scenario 'make a normal reservation' do
+	scenario 'make a normal reservation',js:true do
 		visit dashboard_home_path
 
+		within(all(".training-card").first) do
+			click_on 'Inschrijven'
+		end
+
+		expect(page).to have_content('Aangemeld voor training')
 
 	end
 
 	scenario 'Make a reservation when a training is full' do
 		visit dashboard_home_path
+		count = TrainingParticipant.count
 
-		within(all(".wrapper")[1]) do
-			click_on 'Aanmelden'
+		within(all(".training-card-maximum_reached").first) do
+			click_on 'Inschrijven'
 		end
-		expect(page).to have_content('Maximaal aantal personen bereikt')
-	end
-
-	scenario 'Make a reservation when you have a more frequent training already reserved ' do
-		visit dashboard_home_path
-
-		within(all(".wrapper").first) do
-			click_on 'Aanmelden'
-		end
-
-		expect(page).to have_content('Aangemeld voor training')
-
-		within(all(".wrapper")[2]) do
-			click_on 'Aanmelden'
-		end
-		expect(page).to have_content('Kan nog niet aanmelden, wacht 1 dag na laatste training')
+		expect(count).to eql(TrainingParticipant.count)
 	end
 end

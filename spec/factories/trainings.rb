@@ -4,7 +4,7 @@ FactoryBot.define do
   end
 
   trait :first do
-    date { "#{Date.today + 2.days}" }
+    date { "#{Date.today + 1.days}" }
     start_hour { "20:30" }
     end_hour { "21:30" }
     max_participants { 1 }
@@ -14,7 +14,7 @@ FactoryBot.define do
   end
 
   trait :second do
-    date { "#{Date.today + 4.days}" }
+    date { "#{Date.today + 2.days}" }
     start_hour { "20:30" }
     end_hour { "21:30" }
     max_participants { 0 }
@@ -24,7 +24,7 @@ FactoryBot.define do
   end
 
   trait :third do
-    date { "#{Date.today + 6.days}" }
+    date { "#{Date.today + 3.days}" }
     start_hour { "20:30" }
     end_hour { "21:30" }
     max_participants { 1 }
