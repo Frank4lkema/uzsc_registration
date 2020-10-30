@@ -1,7 +1,48 @@
-.app-header{
-	color: #fff;
+.header{
+	grid-row: 1/2;
+	display:grid;
 
+	grid-template-columns:  40px 100px 1fr 1fr 1fr 200px;
+
+
+	color: #fff;
 	h1{
 		border: 1px solid white;
 	}
 }
+
+.header-image{
+	grid-column: 2/3;
+	/*width: 100%;*/
+	padding:15px;
+}
+
+.header-text{
+	color: #37474f;
+	grid-column: 3/5;
+	padding-left: 15px;
+	padding-top: 25px;
+}
+
+.header-menu{
+	grid-column: 6/7;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	color: #37474f;
+}
+
+.header-menu-text{
+	grid-column: 1/2;
+	color: #37474f;
+	padding-right: 15px;
+	padding-top: 25px;
+}
+
+.header-menu-dropdown{
+	grid-column: 2/3;
+	padding-top: 20px;
+	font-size: 40px;
+}
+
+
+

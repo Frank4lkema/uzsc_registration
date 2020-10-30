@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>UzscRegistratieApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+	<title>UzscRegistratieApp</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
+</head>
 
-  <body>
-  <% if user_signed_in? %>
-    <%= render "shared/header" %>
-  <% end %>
-
-  <% flash.each do |type, msg| %>
-	  <div class="alert alert-info">
-		  <%= msg %>
-	  </div>
-  <% end %>
-	  <%= yield %>
-  </body>
+<body>
+<% if user_signed_in? %>
+	<div class="main-grid">
+		<div class="header">
+			<%= render "shared/header" %>
+		</div>
+		<div class="main-content">
+			<%= yield %>
+		</div>
+	</div>
+<% else %>
+	<%= yield %>
+<% end %>
+</body>
 </html>
