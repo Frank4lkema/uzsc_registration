@@ -1,5 +1,26 @@
 <div class="conformation-grid">
 	<div class="conformation-box">
-		<h1>Test</h1>
+		<div class="conformation-header">
+			<h1>
+			Je gaat je inschrijven voor de training van <%= day_date_month(@training.date).downcase %>
+			</h1>
+		</div>
+		<div class="conformation-text">
+			<p>
+				Wanneer je bent ingeschreven is het de bedoeling dat je komt opdagen.
+			</p>
+			<br>
+			<p>
+				Mocht je onverhoopt toch niet kunnen, schrijf je dan weer uit (minimaal 24 uur van te voren)
+			</p>
+		</div>
+		<div class="conformation-footer">
+			<div class="green-button height-100">
+				<%= link_to "Inschrijven", training_participants_path(training_id: @training.id), method: :post %>
+			</div>
+			<div class="total-white-button height-100">
+				<%= link_to "Annuleren", dashboard_home_path %>
+			</div>
+		</div>
 	</div>
 </div>
