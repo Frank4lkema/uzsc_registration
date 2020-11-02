@@ -12,8 +12,12 @@ RSpec.describe 'Trying to reserve a Training', type: :feature do
 			click_on 'Inschrijven'
 		end
 
-		expect(page).to have_content('Aangemeld voor training')
+		expect(page).to have_content('Wanneer je bent ingeschreven is het de bedoeling dat je komt opdagen.')
+		expect(page).to have_content('Mocht je onverhoopt toch niet kunnen, schrijf je dan weer uit (minimaal 24 uur van te voren)')
 
+		click_on 'Inschrijven'
+
+		expect(page).to have_content('Aangemeld voor training')
 	end
 
 	scenario 'Make a reservation when a training is full' do
