@@ -71,7 +71,7 @@
 			<% if registered.nil? %>
 			<% else %>
 				<div class="training-card-button green-button">
-					<%= link_to "Inschrijven", training_participants_path(training_id: training.id), method: :post %>
+					<%= link_to "Inschrijven", new_training_participant_path(training_id: training.id) %>
 				</div>
 			<% end %>
 		</div>

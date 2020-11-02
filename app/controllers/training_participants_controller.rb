@@ -1,4 +1,24 @@
 class TrainingParticipantsController < ApplicationController
+
+	def new
+		@training = Training.find(params[:training_id])
+		if @training.training_participants.count < @training.max_participants
+			if current_user.training_participants.joins(:training).where('trainings.date >= ?',Date.today).blank?
+				respond_to do |format|
+					format.html
+				end
+			else
+				flash[:alert] = "Kan nog niet aanmelden, wacht 1 dag na laatste training"
+				redirect_to dashboard_home_path
+			end
+
+		else
+			flash[:alert] = "Maximaal aantal personen bereikt"
+			redirect_to dashboard_home_path
+		end
+
+	end
+
 	def create
 		@training = Training.find(params[:training_id])
 		if @training.training_participants.count < @training.max_participants
