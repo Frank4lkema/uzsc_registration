@@ -16,12 +16,12 @@
 		<i class="fas fa-caret-down dropdown-toggle header-menu-dropdown-arrow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
 
 		<div class="dropdown-menu">
-			<%= link_to 'Uitloggen', destroy_user_session_path, method: :delete, class: "dropdown-item text-black" %>
-			<%= link_to 'Edit profiel ', edit_user_path(current_user.id), class: "dropdown-item text-black" %>
+			<%= link_to 'Uitloggen', destroy_user_session_path, method: :delete, class: "dropdown-item text-black font-size-30" %>
+			<%= link_to 'Edit profiel ', edit_user_path(current_user.id), class: "dropdown-item text-black font-size-30" %>
+			<%= link_to 'Home ', root_path, class: "dropdown-item text-black font-size-30" %>
 			<% if current_user.admin_user? %>
-				<%= link_to 'Admin pagina ', admin_player_overview_path, class: "dropdown-item text-black" %>
-				<%= link_to 'Nieuwe speler ', new_user_path, class: "dropdown-item text-black" %>
-				<%= link_to 'Home ', root_path, class: "dropdown-item text-black" %>
+				<%= link_to 'Admin pagina ', admin_player_overview_path, class: "dropdown-item text-black font-size-30" %>
+				<%= link_to 'Nieuwe speler ', new_user_path, class: "dropdown-item text-black font-size-30" %>
 			<% end %>
 		</div>
 	</div>

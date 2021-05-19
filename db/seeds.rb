@@ -45,8 +45,8 @@ user_array.each do |user|
 end
 
 
-start_date = "27-05-2021".to_date
-(1..10).to_a.each do |x|
+start_date = "20-05-2021".to_date
+(1..11).to_a.each do |x|
 	training = Training.create(
 					date: start_date,
 					start_hour: "21:00",
