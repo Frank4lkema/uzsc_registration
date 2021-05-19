@@ -3,62 +3,6 @@ UserRole.delete_all
 TrainingTeam.delete_all
 Training.delete_all
 User.delete_all
-spreadsheet = Roo::Excelx.new("importbestand.xlsx")
-body = []
-(2..spreadsheet.last_row).each do |i|
-	body << spreadsheet.row(i)
-end
-
-
-body.each do |row|
-	if row[3] == "JEUGD"
-		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
-		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
-
-		training = Training.create(
-			date: row[0],
-			start_hour: start_hour,
-			end_hour: end_hour,
-			max_participants: 100,
-
-		)
-		TrainingTeam.create(
-			team:"Jeugd",
-			training_id: training.id
-		)
-
-	else
-		teams = row[3].scan(/../).map do |team|
-			team = team.split("")
-			if team[0] == "H"
-				team[0] = "Heren"
-			else
-				team[0] = "Dames"
-			end
-
-			team.join(" ")
-		end
-		
-		start_hour = Time.at(row[1]).in_time_zone.strftime('%H:%M')
-		end_hour = Time.at(row[2]).in_time_zone.strftime('%H:%M')
-
-		training = Training.create(
-			date: row[0],
-			start_hour: start_hour,
-			end_hour: end_hour,
-			max_participants: 10,
-		)
-
-		teams.each do |team|
-			TrainingTeam.create(
-							team:team,
-							training_id: training.id
-			)
-		end
-
-	end
-end
-
 
 user = User.create(
 		name:"Frank",
@@ -72,14 +16,49 @@ UserRole.create(
 	user_id: user.id
 )
 
-user_2 = User.create(
-	name:"Frank2",
-	email:"frank2@gmail.com",
-	password: "test123456",
-	team: TEAMS[6],
-	)
 
-UserRole.create(
-	role_type: USER_ROLES[1],
-	user_id: user_2.id
-)
+
+
+user_array = [
+	{name:"mats",email:"mats@gmail.com",password:"mats123456",team: TEAMS[6]},
+	{name:"koen",email:"koen@gmail.com",password:"koen123456",team: TEAMS[6]},
+	{name:"thijs",email:"thijs@gmail.com",password:"thijs123456",team: TEAMS[6]},
+	{name:"joost",email:"joost@gmail.com",password:"joost123456",team: TEAMS[6]},
+	{name:"lucas",email:"lucas@gmail.com",password:"lucas123456",team: TEAMS[6]},
+	{name:"erik",email:"erik@gmail.com",password:"erik123456",team: TEAMS[6]},
+	{name:"rik",email:"rik@gmail.com",password:"rik123456",team: TEAMS[6]},
+	{name:"hans",email:"hans@gmail.com",password:"hans123456",team: TEAMS[6]},
+	{name:"martijn",email:"martijn@gmail.com",password:"martijn123456",team: TEAMS[6]},
+	{name:"arnout",email:"arnout@gmail.com",password:"arnout123456",team: TEAMS[6]},
+	{name:"hagen",email:"hagen@gmail.com",password:"hagen123456",team: TEAMS[6]},
+	{name:"arnoud",email:"arnoud@gmail.com",password:"arnoud123456",team: TEAMS[6]},
+	{name:"martin",email:"martin@gmail.com",password:"martin123456",team: TEAMS[6]},
+]
+
+
+user_array.each do |user|
+	new_user = User.create(user)
+	UserRole.create(
+		role_type: USER_ROLES[1],
+		user_id: new_user.id
+	)
+end
+
+
+start_date = "27-05-2021".to_date
+(1..10).to_a.each do |x|
+	training = Training.create(
+					date: start_date,
+					start_hour: "21:00",
+					end_hour: "22:00",
+					max_participants: 10,
+				)
+
+	TrainingTeam.create(
+									team: TEAMS[6],
+									training_id: training.id
+					)
+
+	start_date = start_date + 1.week
+
+end
